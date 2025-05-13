@@ -1,0 +1,10 @@
+com\mycart\mycart\Model\ItemPrice.class
+com\mycart\mycart\Model\Review.class
+com\mycart\mycart\Config\MongoConfig.class
+com\mycart\mycart\Model\Category.class
+com\mycart\mycart\Config\ActiveMqConfig.class
+com\mycart\mycart\Route\PipelineBuilder.class
+com\mycart\mycart\Model\StockDetails.class
+com\mycart\mycart\MycartApplication.class
+com\mycart\mycart\Route\ItemRoute.class
+com\mycart\mycart\Model\Item.class

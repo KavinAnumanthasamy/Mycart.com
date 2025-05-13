@@ -1,0 +1,4 @@
+MONGO CONFIG FILE ==> //  MongoDB configuration for integrating MongoDB with Apache Camel
+ITEM FILE ==>  POJO (Plain Old Java Object)
+ITEM AGGERGATION ROUTE ==> ItemAggregationRoute vanthu http request ah handle pani pipelinebuildeer kita hlp kekum, details ah fetch panraku
+PIPELINE BUILDER ==> pipeline builder vanthu , mongodb kudaconnect pani category id and specialproduct ah fetch pana use aguthu,

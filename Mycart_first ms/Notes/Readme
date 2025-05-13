@@ -1,0 +1,308 @@
+GET BY ID ==> http://localhost:8080/mycart/item/ITEM123
+GET BY CATEGORY ==> http://localhost:8080/mycart/items/CAT001?includeSpecial=true
+GET BY CATEGORY ID==>http://localhost:8080/category/cat1
+POST NEW ITEM ==> http://localhost:8080/additem
+POST NEW ITEM IN BULK ==> http://localhost:8080/mycart/bulk/items
+POST NEW CATEGORY ==> http://localhost:8080/category/add
+UPDATE THE VALUES ==> http://localhost:8080/mycart/item/{itemId}
+
+//=========================================================================================================================
+[
+    {
+        "categoryId": "cat1",
+        "categoryName": "Home Appliances",
+        "department": "Electronics"
+    },
+    {
+        "categoryId": "cat2",
+        "categoryName": "Mobile Phones",
+        "department": "Electronics"
+    },
+    {
+        "categoryId": "cat3",
+        "categoryName": "Computers & Laptops",
+        "department": "Electronics"
+    },
+    {
+        "categoryId": "cat4",
+        "categoryName": "Kitchen Appliances",
+        "department": "Home & Kitchen"
+    },
+    {
+        "categoryId": "cat5",
+        "categoryName": "Gaming Consoles",
+        "department": "Electronics"
+    }
+]
+
+
+//=========================================================================================================================
+
+[
+    {
+        "_id": "item1",
+        "itemName": "Coffee Maker",
+        "categoryId": "cat5",
+        "lastUpdateDate": "2025-04-16 07:47:33",
+        "itemPrice": {
+            "basePrice": 184,
+            "sellingPrice": 238
+        },
+        "stockDetails": {
+            "availableStock": 731,
+            "unitOfMeasure": "Piece",
+            "soldOut": 42,
+            "damaged": 7
+        },
+        "specialProduct": false,
+        "review": [
+            {
+                "rating": "3",
+                "comment": "Not as expected"
+            }
+        ]
+    },
+    {
+        "_id": "item2",
+        "itemName": "Hair Dryer",
+        "categoryId": "cat1",
+        "lastUpdateDate": "2025-04-16 07:47:33",
+        "itemPrice": {
+            "basePrice": 126,
+            "sellingPrice": 250
+        },
+        "stockDetails": {
+            "availableStock": 1607,
+            "unitOfMeasure": "Piece",
+            "soldOut": 40,
+            "damaged": 10
+        },
+        "specialProduct": false,
+        "review": [
+            {
+                "rating": "2",
+                "comment": "Works well"
+            },
+            {
+                "rating": "3",
+                "comment": "Poor quality"
+            }
+        ]
+    },
+    {
+        "_id": "item3",
+        "itemName": "Portable Speaker",
+        "categoryId": "cat4",
+        "lastUpdateDate": "2025-04-16 07:47:33",
+        "itemPrice": {
+            "basePrice": 121,
+            "sellingPrice": 361
+        },
+        "stockDetails": {
+            "availableStock": 1697,
+            "unitOfMeasure": "Liter",
+            "soldOut": 43,
+            "damaged": 3
+        },
+        "specialProduct": true,
+        "review": [
+            {
+                "rating": "4",
+                "comment": "Not as expected"
+            },
+            {
+                "rating": "2",
+                "comment": "Poor quality"
+            }
+        ]
+    },
+    {
+        "_id": "item4",
+        "itemName": "Smartphone",
+        "categoryId": "cat2",
+        "lastUpdateDate": "2025-04-16 07:47:33",
+        "itemPrice": {
+            "basePrice": 150,
+            "sellingPrice": 350
+        },
+        "stockDetails": {
+            "availableStock": 800,
+            "unitOfMeasure": "Piece",
+            "soldOut": 15,
+            "damaged": 2
+        },
+        "specialProduct": false,
+        "review": [
+            {
+                "rating": "5",
+                "comment": "Highly recommend"
+            },
+            {
+                "rating": "3",
+                "comment": "Pretty decent"
+            }
+        ]
+    },
+    {
+        "_id": "item5",
+        "itemName": "Laptop",
+        "categoryId": "cat3",
+        "lastUpdateDate": "2025-04-16 07:47:33",
+        "itemPrice": {
+            "basePrice": 300,
+            "sellingPrice": 450
+        },
+        "stockDetails": {
+            "availableStock": 500,
+            "unitOfMeasure": "Piece",
+            "soldOut": 25,
+            "damaged": 5
+        },
+        "specialProduct": true,
+        "review": [
+            {
+                "rating": "4",
+                "comment": "Good value for money"
+            },
+            {
+                "rating": "2",
+                "comment": "Not worth it"
+            }
+        ]
+    },
+    {
+        "_id": "item6",
+        "itemName": "Washing Machine",
+        "categoryId": "cat2",
+        "lastUpdateDate": "2025-04-16 07:47:33",
+        "itemPrice": {
+            "basePrice": 400,
+            "sellingPrice": 500
+        },
+        "stockDetails": {
+            "availableStock": 300,
+            "unitOfMeasure": "Piece",
+            "soldOut": 10,
+            "damaged": 4
+        },
+        "specialProduct": true,
+        "review": [
+            {
+                "rating": "5",
+                "comment": "Amazing product"
+            },
+            {
+                "rating": "4",
+                "comment": "Works well"
+            }
+        ]
+    },
+    {
+        "_id": "item7",
+        "itemName": "Microwave Oven",
+        "categoryId": "cat4",
+        "lastUpdateDate": "2025-04-16 07:47:33",
+        "itemPrice": {
+            "basePrice": 180,
+            "sellingPrice": 230
+        },
+        "stockDetails": {
+            "availableStock": 650,
+            "unitOfMeasure": "Piece",
+            "soldOut": 30,
+            "damaged": 3
+        },
+        "specialProduct": false,
+        "review": [
+            {
+                "rating": "3",
+                "comment": "Good value for money"
+            },
+            {
+                "rating": "2",
+                "comment": "Not as expected"
+            }
+        ]
+    },
+    {
+        "_id": "item8",
+        "itemName": "Electric Kettle",
+        "categoryId": "cat1",
+        "lastUpdateDate": "2025-04-16 07:47:33",
+        "itemPrice": {
+            "basePrice": 50,
+            "sellingPrice": 100
+        },
+        "stockDetails": {
+            "availableStock": 900,
+            "unitOfMeasure": "Piece",
+            "soldOut": 10,
+            "damaged": 2
+        },
+        "specialProduct": false,
+        "review": [
+            {
+                "rating": "4",
+                "comment": "Pretty decent"
+            },
+            {
+                "rating": "5",
+                "comment": "Excellent"
+            }
+        ]
+    },
+    {
+        "_id": "item9",
+        "itemName": "Hair Dryer",
+        "categoryId": "cat2",
+        "lastUpdateDate": "2025-04-16 07:47:33",
+        "itemPrice": {
+            "basePrice": 119,
+            "sellingPrice": 297
+        },
+        "stockDetails": {
+            "availableStock": 984,
+            "unitOfMeasure": "KG",
+            "soldOut": 23,
+            "damaged": 5
+        },
+        "specialProduct": false,
+        "review": [
+            {
+                "rating": "5",
+                "comment": "Satisfactory"
+            },
+            {
+                "rating": "1",
+                "comment": "Pretty decent"
+            },
+            {
+                "rating": "4",
+                "comment": "Poor quality"
+            }
+        ]
+    },
+    {
+        "_id": "item10",
+        "itemName": "Laptop",
+        "categoryId": "cat5",
+        "lastUpdateDate": "2025-04-16 07:47:33",
+        "itemPrice": {
+            "basePrice": 108,
+            "sellingPrice": 279
+        },
+        "stockDetails": {
+            "availableStock": 557,
+            "unitOfMeasure": "KG",
+            "soldOut": 30,
+            "damaged": 0
+        },
+        "specialProduct": true,
+        "review": [
+            {
+                "rating": "2",
+                "comment": "Not worth it"
+            }
+        ]
+    }
+]
