@@ -10,8 +10,9 @@ public class SplitInventoryProcessor implements Processor {
     @Override
     public void process(Exchange exchange) throws Exception {
         Object itemsProp = exchange.getProperty("inventoryList");
+//        Is itemsProp a List?              Is the list empty?
         if (!(itemsProp instanceof List) || ((List<?>) itemsProp).isEmpty()) {
-            throw new InventoryException("inventoryList is missing or not a valid list");
+            throw new InventoryException("inventory list is missing or not a valid list");
         }
     }
 }

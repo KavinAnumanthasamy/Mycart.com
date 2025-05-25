@@ -9,7 +9,6 @@ public class ResultDocument {
         this.requestId = requestId;
         this.status = status;
     }
-
     // Getters and setters
     public String getRequestId() {
         return requestId;

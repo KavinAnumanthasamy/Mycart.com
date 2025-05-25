@@ -14,7 +14,6 @@ public class FlattenInventoryProcessor implements Processor {
         Map<String, Object> body = exchange.getIn().getBody(Map.class);
         Object rawItems = body.get("items");
         List<Map<String, Object>> flatItemList = new ArrayList<>();
-
         if (rawItems instanceof List<?>) {
             for (Object group : (List<?>) rawItems) {
                 if (group instanceof List<?>) {

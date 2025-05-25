@@ -29,6 +29,7 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
+		<!-- Connect to mongodb -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-mongodb</artifactId>
@@ -57,16 +58,17 @@
 		</dependency>
 
 		<!-- ActiveMQ dependencies -->
+
 		<dependency>
 			<groupId>org.apache.camel.springboot</groupId>
-			<artifactId>camel-activemq-starter</artifactId>
+			<artifactId>camel-activemq-starter</artifactId> <!-- Camel routes send and receive messages using ActiveMQ (a message broker) -->
 			<version>4.3.0</version>
 		</dependency>
 
 		<!-- Apache Camel MongoDB -->
 		<dependency>
 			<groupId>org.apache.camel.springboot</groupId>
-			<artifactId>camel-mongodb-starter</artifactId>
+			<artifactId>camel-mongodb-starter</artifactId> <!--interacting with MongoDB-->
 			<version>4.3.0</version>
 		</dependency>
 

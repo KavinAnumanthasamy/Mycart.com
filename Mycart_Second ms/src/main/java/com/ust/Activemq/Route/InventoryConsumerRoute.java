@@ -9,8 +9,6 @@
 //@Component
 //public class InventoryConsumerRoute extends RouteBuilder {
 //
-//
-//
 //    @Override
 //    public void configure() throws Exception {
 //
@@ -28,12 +26,13 @@
 //                .log("Unhandled Exception: ${exception.message}")
 //                .end();
 //
-//
-//        from("activemq:queue:updateInventory")
+//        from("activemq:queue:updateInventory?concurrentConsumers=5")
 //                .routeId("asyncInventoryProcessor1")
 //                .log("📤 Consuming inventory update message from ActiveMQ queue")
 //                .process(new InitProcessingListsProcessor())
-//                .split(simple("${exchangeProperty.inventoryList}")).streaming()
+//                .split(simple("${exchangeProperty.inventoryList}"))
+//                .parallelProcessing() // ✅ Enable parallel processing
+//                .streaming()
 //                .doTry()
 //                .process(new ValidationProcessor())
 //                .setBody(simple("${exchangeProperty.itemId}"))
@@ -71,26 +70,29 @@ public class InventoryConsumerRoute extends RouteBuilder {
     @Override
     public void configure() throws Exception {
 
+        // Handle custom inventory exception
         onException(InventoryException.class)
                 .handled(true)
                 .setHeader(Exchange.HTTP_RESPONSE_CODE, constant(400))
                 .setBody(simple("{\"error\": \"${exception.message}\"}"))
-                .log("Exception caught: ${exception.message}")
+                .log("❌ InventoryException: ${exception.message}")
                 .end();
 
+        // Handle all other unhandled exceptions
         onException(Throwable.class)
                 .handled(true)
                 .setHeader(Exchange.HTTP_RESPONSE_CODE, constant(500))
                 .setBody(simple("{\"error\": \"Internal server error occurred.\"}"))
-                .log("Unhandled Exception: ${exception.message}")
+                .log("❌ Unhandled Exception: ${exception.message}")
                 .end();
 
-        from("activemq:queue:updateInventory")
+        from("activemq:queue:updateInventory?concurrentConsumers=5")
                 .routeId("asyncInventoryProcessor1")
                 .log("📤 Consuming inventory update message from ActiveMQ queue")
-                .process(new InitProcessingListsProcessor())
+                .process(new InitProcessingListsProcessor()) // Read full list from message
+                .log("📦 Received item count: ${exchangeProperty.inventoryList.size}")
                 .split(simple("${exchangeProperty.inventoryList}"))
-                .parallelProcessing() // ✅ Enable parallel processing
+                .parallelProcessing()
                 .streaming()
                 .doTry()
                 .process(new ValidationProcessor())
@@ -106,12 +108,12 @@ public class InventoryConsumerRoute extends RouteBuilder {
                 .log("✅ Item found: ${body}")
                 .process(new UpdateStockProcessor())
                 .to("mongodb:myDb?database=mycartdb&collection=item&operation=save")
-                .log("✅ Item updated in db: ${body}")
+                .log("✅ Item updated in DB: ${body}")
                 .process(new SuccessResultProcessor())
                 .doCatch(InventoryException.class)
                 .process(new FailureResultProcessor())
                 .end()
                 .end()
-                .process(new FinalizeResultDocumentProcessor());
+                .process(new FinalizeResultDocumentProcessor()); // After all items
     }
 }
