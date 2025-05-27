@@ -10,7 +10,6 @@ import java.util.List;
 
 @Component
 public class PipelineBuilder {
-
     private static final Logger logger = LoggerFactory.getLogger(PipelineBuilder.class);
 
     public List<Document> buildAggregation(String categoryId, boolean includeSpecial) {

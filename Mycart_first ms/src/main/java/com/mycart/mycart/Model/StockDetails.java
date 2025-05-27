@@ -7,8 +7,6 @@ public class StockDetails {
     private String unitOfMeasure;
     private int soldOut;
     private int damaged;
-//    private Integer soldOut;
-//    private Integer damaged;
     public int getAvailableStock() {
         return availableStock;
     }

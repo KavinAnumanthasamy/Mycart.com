@@ -16,13 +16,10 @@ public class MongoConfig {
         return MongoClients.create(mongoUri);
     }
 
-
     @Bean("myDb")
     public MongoDbComponent mongoDbComponent(MongoClient mongo) {
         MongoDbComponent mongoDbComponent = new MongoDbComponent();
         mongoDbComponent.setMongoConnection(mongo);
         return mongoDbComponent;
     }
-
-
 }

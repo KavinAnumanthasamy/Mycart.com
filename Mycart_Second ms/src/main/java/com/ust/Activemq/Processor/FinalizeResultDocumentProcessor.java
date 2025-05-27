@@ -1,5 +1,4 @@
 package com.ust.Activemq.Processor;
-
 import com.ust.Activemq.Model.ResultDocument;
 import org.apache.camel.Exchange;
 import org.apache.camel.Processor;

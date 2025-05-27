@@ -1,0 +1,19 @@
+AMQ FLATTERNLIST PROCESSOR =>It split all the list seperately in the array (Requirement 2)
+
+AMQ HEALTH CHECK PROCESSOR => To check weather active mq is start or not! (Requirement 2)
+
+FETCH ITEM FROM DB PROCESSOR =>To update the stocks in db, so theyare fetching that details to update (Requirement 1)
+
+FLATTERN INVENTORY PROCESSOR => It Split all the list wich is insied the array (Requirement 1)
+
+INVALID PRICE PROCESSOR =>Base price and selling price greater than 0  for adding the item in the db
+
+INVENTORY VALIDATION PROCESSOR => It validate all the item details is available for updating in the db (Requirement 1)
+
+ITEM ALREADY EXISTS =>For adding the item in the db, check weather the item is already exists or not
+
+INSERTED SUCCESS PROCESSOR => Item sucessfully inserted in the db
+
+SPLIT INVENTORY PROCESSOR => Ensures that inventoryList is present, is a List, and is not empty before splitting.
+
+UPDATE STOCK PROCESSOR => Update the changes that user provide in the postman if the item exists (Requirement 1)

@@ -1,0 +1,32 @@
+
+        //============================================= ✅ Bulk Insert from REST Body============================================================================
+//(for my reference used toD)
+
+        rest("/mycart")
+                .post("/bulk/items")
+                .consumes("application/json")
+                .produces("application/json")
+                .to("direct:bulkInsertFromRest");
+
+        from("direct:bulkInsertFromRest")
+                .routeId("bulkInsertFromRest")
+                .log("Received bulk insert request from REST: ${body}")
+                .split(body())
+                .process(exchange -> {
+                    // Extract categoryId from each item
+                    Map<String, Object> body = exchange.getIn().getBody(Map.class);
+                    String categoryId = body.get("categoryId").toString();
+                    exchange.getIn().setHeader("collectionName", categoryId);
+                })
+                .toD("mongodb:myDb?database=mycartdb&collection=${header.collectionName}&operation=insert")
+                .to("mongodb:myDb?database=mycartdb&collection=item&operation=insert")
+                .log("Inserted item: ${body}")
+                .end()
+                .setHeader(Exchange.CONTENT_TYPE, constant("application/json"))
+                .setHeader(Exchange.HTTP_RESPONSE_CODE, constant(201))
+                .process(exchange -> {
+                    Map<String, String> response = new HashMap<>();
+                    response.put("status", "success");
+                    response.put("message", "Bulk insert completed via REST API");
+                    exchange.getMessage().setBody(response);
+                });
